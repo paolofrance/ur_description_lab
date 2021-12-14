@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="ur5_robot">
+  <xacro:include filename="$(find ur_description)/urdf/inc/ur5_macro.xacro"/>
+  <xacro:include filename="$(find ur_description_lab)/urdf/gripper.xacro"/>
+  <xacro:include filename="$(find ur_description_lab)/urdf/punta.xacro"/>
+  <xacro:include filename="$(find robotiq_ft_sensor)/urdf/robotiq_ft300.urdf.xacro" />
+
+  <xacro:ur5_robot prefix="" />
+  
+  <xacro:robotiq_ft300 parent="tool0" prefix="">
+    <origin xyz="0 0 -0.0045" rpy="0 0 0"/>
+  </xacro:robotiq_ft300>
+  
+  <joint name="my_joint" type="fixed">
+    <origin xyz="0 0 0.075" rpy="0 0 -1.5707" />
+    <parent link="robotiq_ft_frame_id"/>
+    <child link="punta"/>
+ </joint>
+ 
+ 
+  <xacro:punta/>
+  
+ 
+ 
+</robot>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

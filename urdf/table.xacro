@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="table">
+
+  <material name="darkgrey">
+    <color rgba="0.1 0.1 0.1 1.0"/>
+  </material>
+
+<xacro:macro name="table">
+
+  <link name="table">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+     <geometry>
+       <box size="1.5 1.5 .1" />
+     </geometry>
+     <material name="darkgrey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.05" />
+     <geometry>
+       <box size="1.5 1.5 .1" />
+     </geometry>
+     <material name="darkgrey"/>
+    </collision>
+    <collision_checking>
+      <origin rpy="0 0 0" xyz="0 0 0.5" />
+     <geometry>
+       <box size="1.5 1.5 .1" />
+     </geometry>
+    </collision_checking>
+    <inertial>
+      <origin rpy="0 0 3.92699" xyz="0 0 0.05" />
+     <mass value="1"/>
+     <inertia ixx="100"  ixy="0"  ixz="0" iyy="100" iyz="0" izz="100" />
+    </inertial>
+  </link>  
+ 
+</xacro:macro>
+ 
+</robot>

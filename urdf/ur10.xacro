@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="ur10_robot">
+
+  <xacro:include filename="$(find ur_description)/urdf/inc/ur10_macro.xacro"/>
+  <xacro:include filename="$(find ur_description_lab)/urdf/gripper.xacro"/>
+  <xacro:include filename="$(find ur_description_lab)/urdf/table.xacro"/>
+  <xacro:include filename="$(find ur_description_lab)/urdf/ur10_base.xacro"/>
+  <xacro:include filename="$(find robotiq_ft_sensor)/urdf/robotiq_ft300.urdf.xacro" />
+
+  <link name="reference_base">
+  </link>
+
+  <joint name="treference_joint" type="fixed">
+<!--  <origin xyz="-0.525 0.025 -0.06" rpy="0 0 -3.92699" />-->
+  <origin xyz="-0.525 0.025 -0.06" rpy="0 0 0" />
+    <parent link="reference_base"/>
+    <child link="table"/>
+  </joint>
+
+  <xacro:table/>
+  
+  <joint name="table_joint" type="fixed">
+    <origin xyz="0.525 -0.025 0.06" rpy="0 0 0" />
+    <parent link="table"/>
+    <child link="ur10_base"/>
+  </joint>
+
+  <xacro:ur10_base/>
+  
+  <joint name="base_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="ur10_base"/>
+    <child link="ur_base_link"/>
+  </joint>
+  
+  <link name="ur_base_link"/>
+  
+  <joint name="ref_joint" type="fixed">
+    <origin xyz="0 0 0.01" rpy="0 0 3.92699" />
+    <parent link="ur_base_link"/>
+    <child link="base_link"/>
+  </joint>
+
+  <xacro:ur10_robot prefix="" />
+
+  <xacro:robotiq_ft300 parent="tool0" prefix="">
+    <origin xyz="0 0 -0.0045" rpy="0 0 0"/>
+  </xacro:robotiq_ft300>
+
+  <joint name="gripper_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 2.356" />
+    <parent link="robotiq_ft_frame_id"/>
+    <child link="gripper"/>
+  </joint>
+
+  <xacro:gripper/>
+  
+ 
+</robot>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
